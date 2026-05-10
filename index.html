@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Turning PointJob Aid Rajshahi | Smart Coaching Portal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #0f172a;
+            --secondary: #1e293b;
+            --accent: #2563eb;
+            --accent-hover: #1d4ed8;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --bg-color: #f8fafc;
+            --text-dark: #334155;
+            --text-light: #94a3b8;
+            --white: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        body { background: var(--bg-color); color: var(--text-dark); scroll-behavior: smooth; }
+
+        /* Top Header */
+        .top-header { background: var(--primary); color: var(--white); padding: 8px 5%; display: flex; justify-content: space-between; font-size: 13px; }
+        .top-header i { color: #38bdf8; margin-right: 5px; }
+
+        /* Navigation */
+        nav { background: var(--white); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
+        .logo { display: flex; align-items: center; gap: 10px; color: var(--primary); font-size: 24px; font-weight: 700; }
+        .logo i { color: var(--accent); font-size: 28px; }
+        .nav-links a { text-decoration: none; color: var(--text-dark); font-weight: 500; margin-left: 25px; transition: 0.3s; }
+        .nav-links a:hover { color: var(--accent); }
+        .btn-nav { background: var(--accent); color: var(--white) !important; padding: 8px 15px; border-radius: 6px; }
+
+        /* Hero Banner */
+        .hero { background: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.8)), url('https://images.unsplash.com/photo-1523050853061-85e8398c2f64?auto=format&fit=crop&w=1350&q=80') center/cover; height: 350px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; color: var(--white); padding: 0 20px; }
+        .hero h1 { font-size: 36px; margin-bottom: 10px; color: #38bdf8; }
+        .hero p { font-size: 16px; max-width: 600px; color: #cbd5e1; }
+
+        /* News Ticker */
+        .ticker { background: var(--accent); color: var(--white); padding: 10px 0; font-size: 14px; display: flex; align-items: center; }
+        .ticker span { background: var(--primary); padding: 10px 20px; font-weight: bold; white-space: nowrap; }
+        .ticker marquee { padding-left: 15px; font-weight: 500; }
+
+        /* Main Container */
+        .container { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
+        .grid-layout { display: grid; grid-template-columns: 2fr 1fr; gap: 30px; }
+
+        /* Cards */
+        .card { background: var(--white); border-radius: 12px; padding: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.03); margin-bottom: 30px; border: 1px solid #e2e8f0; }
+        .card-title { display: flex; align-items: center; gap: 10px; font-size: 20px; font-weight: 600; color: var(--primary); margin-bottom: 20px; border-bottom: 2px solid #f1f5f9; padding-bottom: 10px; }
+        .card-title i { color: var(--accent); }
+
+        /* Notice Board */
+        .notice-item { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px dashed #cbd5e1; }
+        .notice-item:last-child { border: none; }
+        .badge { padding: 4px 10px; border-radius: 4px; font-size: 12px; font-weight: bold; color: var(--white); }
+        .badge.new { background: var(--danger); }
+        .badge.update { background: var(--warning); }
+        .badge.info { background: var(--accent); }
+
+        /* Payment Section */
+        .payment-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .pay-box { padding: 15px; border-radius: 8px; text-align: center; color: var(--white); font-weight: bold; cursor: pointer; transition: 0.3s; display: flex; flex-direction: column; gap: 5px; }
+        .pay-box:hover { transform: translateY(-3px); }
+        .pay-box i { font-size: 24px; }
+        .bkash { background: #e2136e; }
+        .nagad { background: #f15a22; }
+        .rocket { background: #8c159e; }
+        .upay { background: #006eb7; }
+
+        /* Login Portal */
+        .login-box { background: linear-gradient(135deg, var(--primary), var(--secondary)); color: var(--white); text-align: center; }
+        .login-box .card-title { color: var(--white); border-bottom-color: rgba(255,255,255,0.1); }
+        .input-group { position: relative; margin-bottom: 20px; text-align: left; }
+        .input-group i { position: absolute; left: 15px; top: 15px; color: var(--text-light); }
+        .input-group input { width: 100%; padding: 12px 15px 12px 45px; border: none; border-radius: 8px; outline: none; font-size: 16px; background: rgba(255,255,255,0.1); color: var(--white); transition: 0.3s; }
+        .input-group input::placeholder { color: #cbd5e1; }
+        .input-group input:focus { background: rgba(255,255,255,0.2); box-shadow: 0 0 0 2px var(--accent); }
+        .btn-login { width: 100%; padding: 12px; border: none; border-radius: 8px; background: var(--accent); color: var(--white); font-size: 16px; font-weight: bold; cursor: pointer; transition: 0.3s; }
+        .btn-login:hover { background: var(--accent-hover); }
+
+        /* Dashboard (Hidden Default) */
+        #dashboard-view { display: none; }
+        .profile-header { background: var(--white); padding: 20px 30px; border-radius: 12px; display: flex; align-items: center; gap: 25px; margin-bottom: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border-left: 5px solid var(--accent); }
+        .profile-img { width: 90px; height: 90px; border-radius: 50%; border: 3px solid var(--accent); object-fit: cover; }
+        .profile-info h2 { color: var(--primary); margin-bottom: 5px; }
+        .profile-info p { color: var(--text-light); font-size: 14px; }
+        .profile-info p strong { color: var(--text-dark); }
+        .btn-logout { margin-left: auto; background: #f1f5f9; color: var(--danger); border: 1px solid #e2e8f0; padding: 8px 15px; border-radius: 6px; font-weight: bold; cursor: pointer; transition: 0.3s; }
+        .btn-logout:hover { background: #fee2e2; border-color: #fca5a5; }
+
+        /* Dashboard Tabs */
+        .tab-menu { display: flex; gap: 10px; margin-bottom: 20px; overflow-x: auto; padding-bottom: 5px; }
+        .tab-btn { padding: 12px 20px; background: var(--white); border: 1px solid #e2e8f0; border-radius: 8px; font-weight: 600; color: var(--text-dark); cursor: pointer; transition: 0.3s; white-space: nowrap; display: flex; align-items: center; gap: 8px; }
+        .tab-btn.active { background: var(--accent); color: var(--white); border-color: var(--accent); box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3); }
+        
+        .tab-content { display: none; animation: fadeIn 0.4s ease; }
+        .tab-content.active { display: block; }
+
+        /* Data Tables / Info Rows */
+        .info-row { display: flex; justify-content: space-between; align-items: center; padding: 15px; background: #f8fafc; border-radius: 8px; margin-bottom: 10px; border: 1px solid #f1f5f9; }
+        .info-row:hover { border-color: #cbd5e1; }
+        .btn-action { background: var(--white); border: 1px solid #cbd5e1; padding: 5px 12px; border-radius: 5px; font-size: 13px; cursor: pointer; color: var(--accent); font-weight: bold; transition: 0.2s; }
+        .btn-action:hover { background: var(--accent); color: var(--white); }
+
+        footer { background: var(--primary); color: var(--text-light); text-align: center; padding: 20px; margin-top: 50px; font-size: 14px; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        @media (max-width: 768px) {
+            .grid-layout { grid-template-columns: 1fr; }
+            .profile-header { flex-direction: column; text-align: center; }
+            .btn-logout { margin: 15px auto 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-header">
+        <div><i class="fa-solid fa-location-dot"></i>
+     Rajshahi Branch
+     turningpointrajsahi.com</div>
+        <div><i class="fa-solid fa-phone"></i> Helpline: +8801805-022828</div>
+    </div>
+
+    <nav>
+        <div class="logo">
+            <i class="fa-solid fa-graduation-cap"></i>
+         <span>Turning Point Job Aid</span>
+        </div>
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#notice">Notice</a>
+            <a href="#payment">Payment</a>
+            <a href="#portal" class="btn-nav">Student Portal</a>
+        </div>
+    </nav>
+
+    <div id="public-view">
+        
+        <section class="hero" id="home">
+            <h1>ব্যাংক জব প্রস্তুতির বিশ্বস্ত প্রতিষ্ঠান</h1>
+            <p>আপনার ক্যারিয়ারের সঠিক দিকনির্দেশনায় আমরা অঙ্গীকারবদ্ধ। আধুনিক লাইব্রেরি, স্পেশাল মডেল টেস্ট এবং অভিজ্ঞ শিক্ষকমণ্ডলীর মাধ্যমে নিজেকে প্রস্তুত করুন।</p>
+        </section>
+
+        <div class="ticker">
+            <span><i class="fa-solid fa-bullhorn"></i> Latest Update</span>
+            <marquee behavior="scroll" direction="left">
+                📢 ব্যাংক জব স্পেশাল
+                ব্যাচ(BJ-4) এ ভর্তি চলছে... | পরবর্তী মাসের রুটিন ৩১শে মে পোর্টালে দেওয়া হবে 
+            </marquee>
+        </div>
+
+        <div class="container">
+            <div class="grid-layout">
+                
+                <div class="left-col">
+                    <div class="card" id="notice"><div class="card" id="notice">
+    <div class="card-title">
+        <i class="fa-solid fa-clipboard-list"></i> Academic Notice Board
+    </div>
+    
+    <div class="notice-item" style="flex-direction: column; align-items: flex-start; gap: 10px;">
+        <div style="display: flex; justify-content: space-between; width: 100%; align-items: center;">
+            <span><strong>1. Class Routine & Schedule - May 2026</strong></span>
+            <span class="badge new">New</span>
+        </div>
+        
+        <div style="width: 100%; margin-top: 5px;">
+            <a href="1000085863.jpg" target="_blank">
+                <img src="1000085863.jpg" alt="May Routine" style="width: 100%; border-radius: 6px; border: 1px solid #ddd; cursor: pointer;">
+            </a>
+            <p style="font-size: 11px; color: #64748b; margin-top: 5px; text-align: center;">(ছবিতে ক্লিক করলে বড় করে দেখা যাবে)</p>
+        </div>
+    </div>
+
+    <div class="notice-item">
+        <span>2.Bank Job Foundation Batch (BJ-4)</span>
+        <span class="badge update">Update</span>
+    </div>
+    <div class="notice-item">
+        <span>3. Library Seat Renewal for Next Month</span>
+        <span class="badge info">Info</span>
+    </div>
+</div>
+                            <span 
+                        </div>
+                    </div>
+
+                    <div class="card" id="payment">
+                        <div class="card-title">
+                            <i class="fa-solid fa-wallet"></i> Online Fee Payment
+                        </div>
+                        <p style="margin-bottom: 15px; font-size: 14px;">আপনার মাসিক বেতন বা লাইব্রেরি চার্জ পরিশোধ করুন। পেমেন্ট করার সময় রেফারেন্সে অবশ্যই আপনার <b>Student ID</b> ব্যবহার করবেন।</p>
+                        <div class="payment-grid">
+                            <div class="pay-box bkash">
+                                <i class="fa-solid fa-money-bill-wave"></i>
+                                <span>bKash Payment</span>
+                  01715779067 </div>
+                            <div class="pay-box nagad">
+                                <i class="fa-solid fa-mobile-screen"></i>
+                                <span>Nagad Payment</span>
+                   01785329697</div>
+                            <div class="pay-box rocket">
+                                <i class="fa-solid fa-building-columns"></i>
+                                <span>Rocket Payment
+                01785329697 </div>
+                            <div class="pay-box upay">
+                                <i class="fa-solid fa-credit-card"></i>
+                                <span>Card / Upay</span> not valid
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="right-col" id="portal">
+                    <div class="card login-box">
+                        <div class="card-title" style="justify-content: center;">
+                            <i class="fa-solid fa-user-graduate"></i> Student Portal
+                        </div>
+                        <p style="font-size: 13px; color: #cbd5e1; margin-bottom: 25px;">প্রোফাইল, রুটিন এবং রেজাল্ট দেখতে আপনার রোল নম্বর (Student ID) দিয়ে প্রবেশ করুন।</p>
+                        
+                        <div class="input-group">
+                            <i class="fa-solid fa-id-card"></i>
+                            <input type="text" id="studentId" placeholder="Student ID (e.g. 101, 102)">
+                        </div>
+                        
+                        <button class="btn-login" onclick="login()">
+                            <i class="fa-solid fa-right-to-bracket"></i> Login to Dashboard
+                        </button>
+                        <p style="font-size: 12px; margin-top: 15px; color: #94a3b8;">Demo IDs: 101, 102, 103</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div id="dashboard-view" class="container">
+        
+        <div class="profile-header">
+            <img src="" id="user-img" class="profile-img" alt="Student Photo">
+            <div class="profile-info">
+                <h2 id="user-name">Student Name</h2>
+                <p><strong>Student ID:</strong> <span id="user-id">000</span> | <strong>Turning Point Rajshahi</strong></p>
+                <p style="margin-top: 5px;"><i class="fa-solid fa-book-open"></i> Enrolled: <span id="user-batch" style="color:var(--accent); font-weight:600;">-</span></p>
+            </div>
+            <button class="btn-logout" onclick="location.reload()">
+                <i class="fa-solid fa-power-off"></i> Logout
+            </button>
+        </div>
+
+        <div class="tab-menu">
+            <button class="tab-btn active" onclick="openTab(event, 'routine')"><i class="fa-regular fa-calendar-days"></i> Class Routine</button>
+            <button class="tab-btn" onclick="openTab(event, 'results')"><i class="fa-solid fa-square-poll-vertical"></i> Exam Results</button>
+            <button class="tab-btn" onclick="openTab(event, 'library')"><i class="fa-solid fa-book-reader"></i> Library Info</button>
+            <button class="tab-btn" onclick="openTab(event, 'materials')"><i class="fa-solid fa-file-pdf"></i> Study Materials</button>
+        </div>
+
+        <div id="routine" class="tab-content active">
+            <div class="card">
+                <div class="card-title"><i class="fa-regular fa-calendar-days"></i> My Class Schedule</div>
+                <div class="info-row">
+                    <div>
+                        <strong>Bank Math Special (BJ-2)</strong>
+                        <p style="font-size: 13px; color: var(--text-light); margin-top: 5px;">Sunday & Tuesday | 3:00 PM - 5:00 PM</p>
+                    </div>
+                    <button class="btn-action"><i class="fa-solid fa-download"></i> Routine</button>
+                </div>
+                <div class="info-row">
+                    <div>
+                        <strong>English Foundation (BJ-1)</strong>
+                        <p style="font-size: 13px; color: var(--text-light); margin-top: 5px;">Monday & Wednesday | 10:00 AM - 12:00 PM</p>
+                    </div>
+                    <button class="btn-action"><i class="fa-solid fa-download"></i> Routine</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="results" class="tab-content">
+            <div class="card">
+                <div class="card-title"><i class="fa-solid fa-trophy"></i> Model Test & Quiz Results</div>
+                <div class="info-row">
+                    <div>
+                        <strong>Model Test - 15 (Bank SO)</strong>
+                        <p style="font-size: 13px; color: var(--success); margin-top: 5px; font-weight:bold;">Status: Published</p>
+                    </div>
+                    <button class="btn-action">View Marksheet</button>
+                </div>
+                <div class="info-row">
+                    <div>
+                        <strong>Math Special Weekly Quiz - 04</strong>
+                        <p style="font-size: 13px; color: var(--success); margin-top: 5px; font-weight:bold;">Status: Published</p>
+                    </div>
+                    <button class="btn-action">View Marksheet</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="library" class="tab-content">
+            <div class="card">
+                <div class="card-title"><i class="fa-solid fa-book-reader"></i> Library Status</div>
+                <div style="background: #f0fdf4; border: 1px solid #bbf7d0; padding: 20px; border-radius: 8px;">
+                    <h3 style="color: var(--success); margin-bottom: 10px;">Membership Active</h3>
+                    <p style="margin-bottom: 5px;"><strong>Allocated Seat:</strong> <span id="user-lib-seat">B-12</span></p>
+                    <p style="margin-bottom: 5px;"><strong>Access Time:</strong> 8:00 AM - 8:00 PM</p>
+                    <p><strong>Next Renewal Date:</strong> 05 June, 2026</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="materials" class="tab-content">
+            <div class="card">
+                <div class="card-title"><i class="fa-solid fa-file-pdf"></i> Download Resources</div>
+                <div class="info-row">
+                    <span>Bangladesh Bank AD Past Question Analysis.pdf</span>
+                    <button class="btn-action"><i class="fa-solid fa-download"></i></button>
+                </div>
+                <div class="info-row">
+                    <span>Math Shortcut Formula Sheet - Part 1.pdf</span>
+                    <button class="btn-action"><i class="fa-solid fa-download"></i></button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>© 2026 Turning Point Job Aid Rajshahi | Smart Coaching Management Portal</p>
+    </footer>
+
+    <script>
+        // Student Database Mockup
+        const studentDB = {
+            "101": { 
+                name: "করিম উদ্দিন (Karim Uddin)", 
+                img: "https://xsgames.co/randomusers/assets/avatars/male/11.jpg",
+                batch: "Bank Special (BJ-1, BJ-2)",
+                seat: "A-24"
+            },
+            "102": { 
+                name: "সুমাইয়া জান্নাত (Sumaiya Jannat)", 
+                img: "https://xsgames.co/randomusers/assets/avatars/female/12.jpg",
+                batch: "Foundation Batch (BJ-1)",
+                seat: "B-05"
+            },
+            "103": { 
+                name: "রাকিব হাসান (Rakib Hasan)", 
+                img: "https://xsgames.co/randomusers/assets/avatars/male/23.jpg",
+                batch: "Exam Batch (BJ-3)",
+                seat: "C-10"
+            }
+        };
+
+        function login() {
+            const id = document.getElementById('studentId').value.trim();
+
+            if (id === "") {
+                alert("অনুগ্রহ করে আপনার Student ID (Roll) দিন।");
+                return;
+            }
+
+            // Get student data or use default/guest
+            const student = studentDB[id] || {
+                name: "Guest Student",
+                img: "https://cdn-icons-png.flaticon.com/512/149/149071.png",
+                batch: "General Access",
+                seat: "Not Allocated"
+            };
+
+            // Setup Dashboard Data
+            document.getElementById('user-name').innerText = student.name;
+            document.getElementById('user-id').innerText = id;
+            document.getElementById('user-img').src = student.img;
+            document.getElementById('user-batch').innerText = student.batch;
+            document.getElementById('user-lib-seat').innerText = student.seat;
+
+            // Switch Views
+            document.getElementById('public-view').style.display = 'none';
+            document.getElementById('dashboard-view').style.display = 'block';
+            window.scrollTo(0, 0);
+        }
+
+        function openTab(evt, tabName) {
+            // Hide all contents
+            const tabContents = document.getElementsByClassName("tab-content");
+            for (let i = 0; i < tabContents.length; i++) {
+                tabContents[i].classList.remove("active");
+            }
+
+            // Remove active class from all buttons
+            const tabBtns = document.getElementsByClassName("tab-btn");
+            for (let i = 0; i < tabBtns.length; i++) {
+                tabBtns[i].classList.remove("active");
+            }
+
+            // Show current tab and add active class
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+    </script>
+
+</body>
+</html>
